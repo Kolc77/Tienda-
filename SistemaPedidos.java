@@ -1,8 +1,9 @@
-import java.util.List;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class SistemaPedidos {
-    
+
     // Clase Cliente
     public class Cliente {
         private String nombre;
@@ -13,21 +14,13 @@ public class SistemaPedidos {
             this.direccion = direccion;
         }
 
-        // Getters y Setters
+        // Getters
         public String getNombre() {
             return nombre;
         }
 
-        public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
-
         public String getDireccion() {
             return direccion;
-        }
-
-        public void setDireccion(String direccion) {
-            this.direccion = direccion;
         }
     }
 
@@ -43,29 +36,17 @@ public class SistemaPedidos {
             this.cliente = cliente;
         }
 
-        // Getters y Setters
+        // Getters
         public int getNumPedido() {
             return numPedido;
-        }
-
-        public void setNumPedido(int numPedido) {
-            this.numPedido = numPedido;
         }
 
         public List<String> getArticulos() {
             return articulos;
         }
 
-        public void setArticulos(List<String> articulos) {
-            this.articulos = articulos;
-        }
-
         public Cliente getCliente() {
             return cliente;
-        }
-
-        public void setCliente(Cliente cliente) {
-            this.cliente = cliente;
         }
     }
 
@@ -81,29 +62,17 @@ public class SistemaPedidos {
             this.total = total;
         }
 
-        // Getters y Setters
+        // Getters
         public int getNumPedido() {
             return numPedido;
-        }
-
-        public void setNumPedido(int numPedido) {
-            this.numPedido = numPedido;
         }
 
         public String getMetodoPago() {
             return metodoPago;
         }
 
-        public void setMetodoPago(String metodoPago) {
-            this.metodoPago = metodoPago;
-        }
-
         public double getTotal() {
             return total;
-        }
-
-        public void setTotal(double total) {
-            this.total = total;
         }
     }
 
@@ -121,37 +90,54 @@ public class SistemaPedidos {
             this.correo = correo;
         }
 
-        // Getters y Setters
+        // Getters
         public int getNumPedido() {
             return numPedido;
-        }
-
-        public void setNumPedido(int numPedido) {
-            this.numPedido = numPedido;
         }
 
         public String getGuia() {
             return guia;
         }
 
-        public void setGuia(String guia) {
-            this.guia = guia;
-        }
-
         public Date getFechaEntrega() {
             return fechaEntrega;
-        }
-
-        public void setFechaEntrega(Date fechaEntrega) {
-            this.fechaEntrega = fechaEntrega;
         }
 
         public String getCorreo() {
             return correo;
         }
+    }
 
-        public void setCorreo(String correo) {
-            this.correo = correo;
-        }
+    // Método principal para probar el sistema
+    public static void main(String[] args) {
+        // Crear una instancia del sistema
+        SistemaPedidos sistema = new SistemaPedidos();
+
+        // Crear instancias de Cliente, Pedido, Pago y Notificacion
+        Cliente cliente = sistema.new Cliente("Juan", "Calle 123");
+        Pedido pedido = sistema.new Pedido(1, Arrays.asList("Articulo1", "Articulo2"), cliente); // Usar Arrays.asList()
+        Pago pago = sistema.new Pago(1, "Tarjeta", 100.50);
+        Notificacion notificacion = sistema.new Notificacion(1, "Guia123", new Date(), "juan@correo.com");
+
+        // Mostrar información en consola
+        System.out.println("Información del Cliente:");
+        System.out.println("Nombre: " + cliente.getNombre());
+        System.out.println("Dirección: " + cliente.getDireccion());
+
+        System.out.println("\nInformación del Pedido:");
+        System.out.println("Número de Pedido: " + pedido.getNumPedido());
+        System.out.println("Artículos: " + String.join(", ", pedido.getArticulos()));
+        System.out.println("Cliente: " + pedido.getCliente().getNombre());
+
+        System.out.println("\nInformación del Pago:");
+        System.out.println("Número de Pedido: " + pago.getNumPedido());
+        System.out.println("Método de Pago: " + pago.getMetodoPago());
+        System.out.println("Total: " + pago.getTotal());
+
+        System.out.println("\nInformación de la Notificación:");
+        System.out.println("Número de Pedido: " + notificacion.getNumPedido());
+        System.out.println("Guía: " + notificacion.getGuia());
+        System.out.println("Fecha de Entrega: " + notificacion.getFechaEntrega());
+        System.out.println("Correo: " + notificacion.getCorreo());
     }
 }
