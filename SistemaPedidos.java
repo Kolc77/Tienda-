@@ -12,9 +12,7 @@ public class SistemaPedidos {
         public Cliente(String nombre, String direccion) {
             this.nombre = nombre;
             this.direccion = direccion;
-        }
-
-        // Getters
+        }                                                                                        
         public String getNombre() {
             return nombre;
         }
@@ -114,11 +112,28 @@ public class SistemaPedidos {
         SistemaPedidos sistema = new SistemaPedidos();
 
         // Crear instancias de Cliente, Pedido, Pago y Notificacion
-        Cliente cliente = sistema.new Cliente("Juan", "Calle 123");
-        Pedido pedido = sistema.new Pedido(1, Arrays.asList("Articulo1", "Articulo2"), cliente); // Usar Arrays.asList()
-        Pago pago = sistema.new Pago(1, "Tarjeta", 100.50);
-        Notificacion notificacion = sistema.new Notificacion(1, "Guia123", new Date(), "juan@correo.com");
+        Cliente cliente1 = sistema.new Cliente("Juan", "Calle 123");
+        Pedido pedido1 = sistema.new Pedido(1, Arrays.asList("Articulo1", "Articulo2"), cliente1); // Usar Arrays.asList()
+        Pago pago1 = sistema.new Pago(1, "Tarjeta", 100.50);
+        Notificacion notificacion1 = sistema.new Notificacion(1, "Guia3", new Date(), "juan@correo.com");
 
+        Cliente cliente2= sistema.new Cliente("Pedro", "Calle tierra");
+        Pedido pedido2 = sistema.new Pedido(1, Arrays.asList("Articulo1", "Articulo2"), cliente2); // Usar Arrays.asList()
+        Pago pago2 = sistema.new Pago(1, "Tarjeta", 150.50);
+        Notificacion notificacion2 = sistema.new Notificacion(1, "Guia83", new Date(), "Pedro@correo.com");
+
+        Cliente cliente3 = sistema.new Cliente("Armando", "Calle 543");
+        Pedido pedido3 = sistema.new Pedido(1, Arrays.asList("Articulo1", "Articulo2"), cliente3); // Usar Arrays.asList()
+        Pago pago3 = sistema.new Pago(1, "Tarjeta", 160.50);
+        Notificacion notificacion3 = sistema.new Notificacion(1, "Guia1", new Date(), "Armando@correo.com");
+        
+        MostrarInformacionCliente(cliente1, pedido1, pago1, notificacion1);
+        MostrarInformacionCliente(cliente2, pedido2, pago2, notificacion2);
+        MostrarInformacionCliente(cliente3, pedido3, pago3, notificacion3);
+    }
+
+
+    public static void MostrarInformacionCliente(Cliente cliente, Pedido pedido, Pago pago, Notificacion notificacion){ 
         // Mostrar información en consola
         System.out.println("Información del Cliente:");
         System.out.println("Nombre: " + cliente.getNombre());
@@ -139,5 +154,6 @@ public class SistemaPedidos {
         System.out.println("Guía: " + notificacion.getGuia());
         System.out.println("Fecha de Entrega: " + notificacion.getFechaEntrega());
         System.out.println("Correo: " + notificacion.getCorreo());
+        System.out.println("---------------------------------------------------");
     }
 }
